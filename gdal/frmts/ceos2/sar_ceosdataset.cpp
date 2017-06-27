@@ -1638,7 +1638,9 @@ GDALDataset *SAR_CEOSDataset::Open( GDALOpenInfo * poOpenInfo )
         return NULL;
 
     if( (poOpenInfo->pabyHeader[4] != 0x3f
-         && poOpenInfo->pabyHeader[4] != 0x32)
+         && poOpenInfo->pabyHeader[4] != 0x32
+         && poOpenInfo->pabyHeader[4] != 0xC0 /** ALOS-2 Constant*/
+         )
         || poOpenInfo->pabyHeader[5] != 0xc0
         || poOpenInfo->pabyHeader[6] != 0x12
         || poOpenInfo->pabyHeader[7] != 0x12 )
